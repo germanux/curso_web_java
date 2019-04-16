@@ -15,7 +15,7 @@ import ejemplospoo.Geometria.Triangulo;
  * @author German
  */
 public class ObjetosSueltos {
-    
+     
     public static void calculosSueltos() {
         Rectangulo rec = new Rectangulo(10, 5);
         //rec.setAltura(10);

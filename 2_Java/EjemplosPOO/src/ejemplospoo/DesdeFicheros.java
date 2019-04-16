@@ -19,7 +19,7 @@ public class DesdeFicheros {
         Rectangulo rec = new Rectangulo(10, 5);
         FileWriter fichero = null;
         PrintWriter pw = null;
-        
+                
         try {   // Intentamos hacer cosas con ficheros
             fichero = new FileWriter("C:/figuras/rectangulo.txt");
             pw = new PrintWriter(fichero);
@@ -35,6 +35,33 @@ public class DesdeFicheros {
                 if (fichero != null) {
                     fichero.close();                
                 } 
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
+    public static void leerRectangulo() {
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        
+        try {
+            fichero = new File ("C:/figuras/rectangulo.txt");
+            fr = new FileReader(fichero);
+            br = new BufferedReader(fr);
+            
+            String linea;
+            linea = br.readLine();
+            if (linea != null)
+                System.out.println(linea);  
+            
+            Rectangulo rec = new Rectangulo(0, 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fr != null)
+                    fr.close();            
             } catch (Exception e2) {
                 e2.printStackTrace();
             }

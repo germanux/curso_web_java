@@ -22,5 +22,6 @@ public class EjemplosPOO {
     public static void main(String[] args) {
         // ObjetosSueltos.calculosSueltos();
         DesdeFicheros.guardarRectangulos();
+        DesdeFicheros.leerRectangulo();
     }    
 }
