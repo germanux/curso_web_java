@@ -20,33 +20,7 @@ public class EjemplosPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Rectangulo rec = new Rectangulo(10, 5);
-        //rec.setAltura(10);
-        //rec.setBase(5);
-        rec.setColor("Azul");
-        System.out.println("Area rectangulo: " 
-                + rec.calcArea());
-        System.out.println("Perimetro rectangulo: " 
-                + rec.calcPerimetro());
-        
-        float[] ladosTri = {2,3,5};
-        Triangulo tri = new Triangulo(10, 5, ladosTri);
-        // tri.setAltura(10);        // tri.setBase(5);
-        System.out.println("Area Triangulo: " 
-                + tri.calcArea());
-        System.out.println("Perimetro Triangulo: " 
-                + tri.calcPerimetro());
-        
-        Circulo cir = new Circulo(10);
-        System.out.println("Area Circulo: " 
-                + cir.calcArea());
-        System.out.println("Perimetro Circulo: " 
-                + cir.calcPerimetro());
-        
-        Cuadrado  cuad = new Cuadrado(12, "rojo");
-        System.out.println("Area Cuadrado: " 
-                + cuad.calcArea());
-        System.out.println("Perimetro Cuadrado: " 
-                + cuad.calcPerimetro());
+        // ObjetosSueltos.calculosSueltos();
+        DesdeFicheros.guardarRectangulos();
     }    
 }
