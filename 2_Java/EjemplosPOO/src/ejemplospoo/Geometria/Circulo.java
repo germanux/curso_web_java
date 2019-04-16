@@ -12,7 +12,15 @@ package ejemplospoo.Geometria;
 public class Circulo extends Figura {
     
     private float radio;
-
+    
+    public Circulo (float radio) {
+        super("blanco");
+        this.radio = radio;
+    }
+    public Circulo (float radio, String color) {
+        super(color);
+        this.radio = radio;
+    }
     public float getRadio() {
         return radio;
     }
@@ -23,5 +31,8 @@ public class Circulo extends Figura {
     public float calcArea() {
         return (float)(Math.PI 
             * Math.pow(this.radio, 2));
+    }
+    public float calcPerimetro() {
+        return 2 * (float) Math.PI * radio;
     }
 }

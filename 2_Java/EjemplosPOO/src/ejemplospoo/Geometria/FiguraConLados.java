@@ -14,6 +14,17 @@ public class FiguraConLados extends Figura{
     protected float altura;
     protected float base;
 
+    public FiguraConLados(float altura, float base) {
+        super("blanco");
+        this.altura = altura;
+        this.base = base;
+    }
+    public FiguraConLados(float altura, float base, String color) {
+        super(color);
+        this.altura = altura;
+        this.base = base;
+    }
+    
     public float getAltura() {
         return altura;
     }
