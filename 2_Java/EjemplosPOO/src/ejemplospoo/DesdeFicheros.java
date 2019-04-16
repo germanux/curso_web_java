@@ -50,10 +50,34 @@ public class DesdeFicheros {
             fr = new FileReader(fichero);
             br = new BufferedReader(fr);
             
-            String linea;
+            String linea ;
             linea = br.readLine();
-            if (linea != null)
-                System.out.println(linea);  
+            if (linea != null) {
+                System.out.println(linea); 
+                Rectangulo rec = new Rectangulo(0, 0); 
+                String[] partesCampos = linea.split(":")[1].split(",");
+                for (String parteCampo : partesCampos) {
+                    /*String[] divParte = parteCampo.split("=");
+                    String campo = divParte[0].trim().toLowerCase();
+                    String valor = divParte[1].trim();*/
+                    int posIgual = parteCampo.indexOf("=");
+                    String campo = parteCampo.substring(0, posIgual).trim().toLowerCase();
+                    String valor = parteCampo.substring(posIgual + 1).trim();  
+                    
+                    switch(campo) {
+                        case "base": rec.setBase(Float.parseFloat(valor));
+                        break;
+                        case "altura": rec.setAltura(Float.parseFloat(valor));
+                        break;
+                        case "color": rec.setColor(valor);
+                        break;
+                    }
+                }                
+                System.out.println("Area rectangulo: " 
+                        + rec.calcArea());
+                System.out.println("Perimetro rectangulo: " 
+                        + rec.calcPerimetro());
+            }
             
             Rectangulo rec = new Rectangulo(0, 0);
         } catch (Exception e) {
