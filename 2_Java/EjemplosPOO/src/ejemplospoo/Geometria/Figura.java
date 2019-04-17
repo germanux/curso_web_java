@@ -9,14 +9,14 @@ package ejemplospoo.Geometria;
  *
  * @author German
  */
-public class Figura {
+public abstract class Figura implements Comparable<Figura>{
     
     protected String color;
 
     public Figura(String textoDes) {
         String[] partesTexto = textoDes.split(":");
         if (partesTexto.length == 1) {
-            this.color = color;
+            this.color = textoDes;
         } 
         else if (partesTexto.length == 2) {
             String[] partesCampos = textoDes.split(":")[1].split(",");
@@ -39,5 +39,17 @@ public class Figura {
     public void setColor(String color) {
         this.color = color;
     }
-
+    public abstract float calcArea();
+    
+    public abstract float calcPerimetro();
+    
+    @Override
+    public int compareTo(Figura fig) {
+        if (this.calcArea() == fig.calcArea())
+            return 0;
+        else if (this.calcArea() < fig.calcArea())
+            return -1;
+        else
+            return 1;
+    }
 }

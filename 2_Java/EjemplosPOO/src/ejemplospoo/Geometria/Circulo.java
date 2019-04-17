@@ -9,7 +9,7 @@ package ejemplospoo.Geometria;
  *
  * @author German
  */
-public class Circulo extends Figura {
+public class Circulo extends Figura implements IImprimible {
     
     private float radio;
     
@@ -44,11 +44,12 @@ public class Circulo extends Figura {
     public void setRadio(float radio) {
         this.radio = radio;
     }
-    
+    @Override
     public float calcArea() {
         return (float)(Math.PI 
             * Math.pow(this.radio, 2));
     }
+    @Override
     public float calcPerimetro() {
         return 2 * (float) Math.PI * radio;
     }
@@ -56,5 +57,10 @@ public class Circulo extends Figura {
     public String toString() {
         return "Circulo: radio = " + this.radio
                 + ", color = " + this.getColor();
+    }
+
+    @Override
+    public void imprimir() {
+        System.out.println("Circulo.imprimir(): " + this.toString());
     }
 }

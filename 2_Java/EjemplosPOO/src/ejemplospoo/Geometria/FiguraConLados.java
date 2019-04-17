@@ -9,7 +9,7 @@ package ejemplospoo.Geometria;
  *
  * @author German
  */
-public class FiguraConLados extends Figura {
+public abstract class FiguraConLados extends Figura {
 
     protected float altura;
     protected float base;
@@ -48,7 +48,7 @@ public class FiguraConLados extends Figura {
     }
     @Override
     public String toString() {
-        return "Rectangulo: base = " + this.getBase()
+        return "Figura con lados: base = " + this.getBase()
                 + ", altura = " + this.getAltura()
                 + ", color = " + this.getColor();
     }

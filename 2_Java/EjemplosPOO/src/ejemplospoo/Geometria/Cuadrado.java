@@ -9,7 +9,7 @@ package ejemplospoo.Geometria;
  *
  * @author German
  */
-public class Cuadrado extends Rectangulo {
+public class Cuadrado extends Rectangulo implements IImprimible, IMostrable {
         
     public Cuadrado(float lado) {
         super(lado, lado);
@@ -42,5 +42,15 @@ public class Cuadrado extends Rectangulo {
     public String toString() {
         return "Cuadrado: lado = " + this.base
                 + ", color = " + this.getColor();
+    }
+
+    @Override
+    public void imprimir() {
+        System.out.println("Cuadrado.imprimir(): " + this.toString());
+    }
+
+    @Override
+    public void mostrar() {
+        System.out.println("Cuadrado.mostrar(): " + this.toString());
     }
 }

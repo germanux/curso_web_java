@@ -20,10 +20,18 @@ public class Rectangulo extends FiguraConLados {
     public Rectangulo(String textoDeserializar) {
         super(textoDeserializar);
     }
+    @Override
     public float calcArea() {
         return this.base * this.altura;
     }
+    @Override
     public float calcPerimetro() {
         return 2 * base + 2 * altura;
+    }
+    @Override
+    public String toString() {
+        return "Rectangulo: base = " + this.getBase()
+                + ", altura = " + this.getAltura()
+                + ", color = " + this.getColor();
     }
 }

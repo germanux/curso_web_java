@@ -9,7 +9,7 @@ package ejemplospoo.Geometria;
  *
  * @author German
  */
-public class Triangulo extends FiguraConLados {
+public class Triangulo extends FiguraConLados implements IMostrable {
         
     private float[] lados;
 
@@ -28,10 +28,23 @@ public class Triangulo extends FiguraConLados {
     public void setLados(float[] lados) {
         this.lados = lados;
     }    
+    @Override
     public float calcArea() {
         return this.base * this.altura / 2;
     }
+    @Override
     public float calcPerimetro() {
         return lados[0] + lados[1] + lados[2];
+    }
+    
+    @Override
+    public void mostrar() {
+        System.out.println("Triangulo.mostrar(): " + this.toString());
+    }
+    @Override
+    public String toString() {
+        return "Triangulo: base = " + this.getBase()
+                + ", altura = " + this.getAltura()
+                + ", color = " + this.getColor();
     }
 }
