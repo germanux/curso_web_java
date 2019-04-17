@@ -20,8 +20,10 @@ public class Triangulo extends FiguraConLados {
     public Triangulo(float base, float altura, float[] lados, String color) {
         super(base, altura, color);
         this.lados = lados;
+    }    
+    public Triangulo(String textoDeserializar) {
+        super(textoDeserializar);
     }
-    
     public float[] getLados() { return lados; }
     public void setLados(float[] lados) {
         this.lados = lados;

@@ -21,6 +21,23 @@ public class Circulo extends Figura {
         super(color);
         this.radio = radio;
     }
+    public Circulo(String textoDes) {
+        super("");
+        String[] partesCampos = textoDes.split(":")[1].split(",");
+        for (String parteCampo : partesCampos) {
+            int posIgual = parteCampo.indexOf("=");
+            String campo = parteCampo.substring(0, posIgual).trim().toLowerCase();
+            String valor = parteCampo.substring(posIgual + 1).trim();
+            switch (campo) {
+                case "radio":
+                    this.radio = Float.parseFloat(valor);
+                    break;
+                case "color":
+                    this.color = valor; // CAMBIAR color a PROTECTED
+                    break;
+            }
+        }
+    }
     public float getRadio() {
         return radio;
     }
@@ -34,5 +51,10 @@ public class Circulo extends Figura {
     }
     public float calcPerimetro() {
         return 2 * (float) Math.PI * radio;
+    }
+    @Override
+    public String toString() {
+        return "Circulo: radio = " + this.radio
+                + ", color = " + this.getColor();
     }
 }
