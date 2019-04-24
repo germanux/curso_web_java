@@ -33,7 +33,7 @@ public class ServicioUsuarios {
 
     // Codigo de la clase:
     private DerbyDBUsuario bdUsu;
-    private final ArrayList<Usuario> listaUsuarios;
+    private ArrayList<Usuario> listaUsuarios;
 
     public boolean addUsuario(String nom, String edad, String email, String password) {
         try {
@@ -41,9 +41,11 @@ public class ServicioUsuarios {
                 return false;
             } else {
                 int iEdad = Integer.parseInt(edad);
-                Usuario nuevoUsu = new Usuario(nom, password, iEdad, email);
-                this.listaUsuarios.add(nuevoUsu);
-                return this.bdUsu.crear(nuevoUsu);
+                Usuario nuevoUsu = new Usuario(null, nom, iEdad, email, password);
+                
+                boolean creado = this.bdUsu.crear(nuevoUsu);
+                this.listaUsuarios = bdUsu.listar();
+                return this.listaUsuarios != null && creado;
             }
         } catch (Exception ex) {
             System.err.println(" << ERROR: No se ha podido crear Usuario " + ex.getMessage());
@@ -51,6 +53,43 @@ public class ServicioUsuarios {
         }
     }
 
+    public boolean modificarUsuario(
+            String id,             
+            String nom, 
+            String edad, 
+            String email, 
+            String password) {
+        try {
+            if (id.equals("") || nom.equals("") || edad.equals("") || email.equals("") || password.equals("")) {
+                return false;
+            } else {
+                Integer iId = Integer.parseInt(id);
+                int iEdad = Integer.parseInt(edad);
+                Usuario nuevoUsu = new Usuario(iId, nom, iEdad, email, password);
+                boolean modificado = this.bdUsu.modificar(nuevoUsu);
+                this.listaUsuarios = bdUsu.listar();
+                return this.listaUsuarios != null && modificado;
+            }
+        } catch (Exception ex) {
+            System.err.println(" << ERROR: No se ha podido modificar Usuario " + ex.getMessage());
+            return false;
+        }
+    }
+    public boolean eliminar(String id) {
+        try {
+            if (id.equals("")) {
+                return false;
+            } else {
+                Integer iId = Integer.parseInt(id);
+                boolean eliminado = this.bdUsu.elimninar(iId);
+                this.listaUsuarios = bdUsu.listar();
+                return this.listaUsuarios != null && eliminado;
+            }
+        } catch (Exception ex) {
+            System.err.println(" << ERROR: No se ha podido eliminar Usuario " + ex.getMessage());
+            return false;
+        }
+    }
     public boolean validacionPasswd(String email, String passwd) {
         for (Usuario usu : listaUsuarios) {
             if (usu.getEmail().equals(email) && usu.getPassword().equals(passwd)) {

@@ -57,6 +57,8 @@ public class UsuariosController extends HttpServlet {
                     }
                     break;
             }
+        } catch (Exception ex) {            
+            System.out.println(">>>> ERROR Usuario.do" + ex.getMessage());
         }
     }
 

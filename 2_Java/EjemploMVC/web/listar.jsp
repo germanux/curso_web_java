@@ -12,6 +12,7 @@
             <th>Email</th>
         </thead>
         <tbody>
+            
             <%
                 for (Usuario usu : listaUsu) {
             %>
