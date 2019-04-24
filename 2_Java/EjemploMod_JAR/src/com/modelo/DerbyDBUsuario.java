@@ -35,9 +35,9 @@ public class DerbyDBUsuario {
         try (Connection con = DriverManager.getConnection(
                 Constantes.CONEX_DB, Constantes.USUARIO_DB, Constantes.PASSWORD_DB)) {
             String consultaSQL = "SELECT id, nombre, edad, email, password "
-                    + " FROM Usuario WHERE email=? ";
-            PreparedStatement sentencia = con.prepareStatement(consultaSQL);
-            sentencia.setString(1, email);
+                    + " FROM Usuario WHERE email='" + email + "'";
+            Statement sentencia = con.createStatement();
+            // sentencia.setString(1, email);
             ResultSet res = sentencia.executeQuery(consultaSQL);
             Usuario usu = null;
             if (res.next()) {
