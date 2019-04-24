@@ -33,16 +33,29 @@ public class UsuariosController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+            String accion = request.getParameter("accion");
+
             String nom = request.getParameter("nom");
             String email = request.getParameter("email");
             String edad = request.getParameter("eda");
             String passwd = request.getParameter("passwd");
-            
-            boolean realizado = ServicioUsuarios.getInstancia().addUsuario(nom, edad, email, passwd);
-            if (realizado) {
-                out.println("<h3>Registrado correctamente</h3>");
-            } else {
-                out.println("<h3>No se ha Registrado</h3>");                
+
+            switch (accion) {
+                case "login":
+                    if (ServicioUsuarios.getInstancia().validacionPasswd(email, passwd)) {
+                        out.println("<h3>Login correcto</h3>");
+                    } else {
+                        out.println("<h3>Login incorrecto/h3>");
+                    }
+                    break;
+                case "registro":
+                    boolean realizado = ServicioUsuarios.getInstancia().addUsuario(nom, edad, email, passwd);
+                    if (realizado) {
+                        out.println("<h3>Registrado correctamente</h3>");
+                    } else {
+                        out.println("<h3>No se ha Registrado</h3>");
+                    }
+                    break;
             }
         }
     }

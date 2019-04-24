@@ -20,6 +20,7 @@
                         <input type="email" name="email" id="email" size="100" 
                                required="required" value="emailmvc@valido.com"/> </td></tr>
             </table>
+            <input type="hidden" name="accion" id="accion" value="registro"/>
             <input type="submit" value="Enviar"/>
         </form>
     </body>
