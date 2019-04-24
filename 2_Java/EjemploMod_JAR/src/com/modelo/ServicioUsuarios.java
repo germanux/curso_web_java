@@ -52,7 +52,9 @@ public class ServicioUsuarios {
             return false;
         }
     }
-
+    public Usuario obtenerUno(String email) {
+        return this.bdUsu.obtenerUno(email);
+    }
     public boolean modificarUsuario(
             String id,             
             String nom, 

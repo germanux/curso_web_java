@@ -44,6 +44,9 @@ public class UsuariosController extends HttpServlet {
                 case "login":
                     if (ServicioUsuarios.getInstancia().validacionPasswd(email, passwd)) {
                         out.println("<h3>Login correcto</h3>");
+                        
+                         HttpSession sesion = request.getSession();
+                         sesion.setAttribute("usuario_email", email);
                     } else {
                         out.println("<h3>Login incorrecto/h3>");
                     }
